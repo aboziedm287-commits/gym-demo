@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POWER FITNESS CLUB | النادي الرياضي الأقوى</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            /* خلفية سوداء رياضية احترافية مع طبقة تعتيم */
+            background: linear-gradient(rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0.96)), 
+                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        header {
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 22px 15px;
+            text-align: center;
+            border-bottom: 2px solid #e50914;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(229, 9, 20, 0.2);
+        }
+
+        header h1 {
+            color: #e50914;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+        }
+
+        header p {
+            color: #bbb;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            padding: 20px 15px;
+        }
+
+        .hero {
+            text-align: center;
+            margin: 15px 0 30px 0;
+            padding: 25px 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(229, 9, 20, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            color: #aaa;
+            font-size: 13px;
+        }
+
+        .section-title {
+            color: #e50914;
+            font-size: 20px;
+            font-weight: 800;
+            margin: 35px 0 18px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(229, 9, 20, 0.8), transparent);
+        }
+
+        /* كروت الخدمات والصور */
+        .feature-card {
+            background: rgba(22, 22, 22, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(229, 9, 20, 0.6);
+        }
+
+        .feature-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .feature-body {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .feature-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .feature-desc {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* مواعيد الجيم */
+        .schedule-card {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 12px;
+            padding: 18px;
+            border-right: 4px solid #e50914;
+            margin-bottom: 25px;
+            font-size: 13px;
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .schedule-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        /* كروت الأسعار الفخمة */
+        .pricing-card {
+            background: linear-gradient(145deg, rgba(25,25,25,0.9), rgba(15,15,15,0.95));
+            border-radius: 16px;
+            padding: 25px 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid #e50914;
+            box-shadow: 0 0 25px rgba(229, 9, 20, 0.25);
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e50914;
+            color: #fff;
+            padding: 3px 15px;
+            font-size: 11px;
+            font-weight: 800;
+            border-radius: 20px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(229, 9, 20, 0.4);
+        }
+
+        .plan-name {
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .plan-price {
+            font-size: 32px;
+            font-weight: 900;
+            color: #e50914;
+            margin: 12px 0;
+        }
+
+        .plan-price span {
+            font-size: 14px;
+            color: #888;
+            font-weight: 400;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 15px 0 20px 0;
+            font-size: 13px;
+            color: #ccc;
+        }
+
+        .plan-features li {
+            margin-bottom: 8px;
+        }
+
+        .btn-whatsapp {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+            opacity: 0.9;
+        }
+
+        .location-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            background: linear-gradient(135deg, #e50914, #b20710);
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 15px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 5px 20px rgba(229, 9, 20, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>POWER FITNESS</h1>
+        <p>THE ULTIMATE GYM EXPERIENCE</p>
+    </header>
+
+    <div class="container">
+
+        <div class="hero">
+            <h2>ابنِ جسمك المثالي مع الأفضل</h2>
+            <p>أحدث الأجهزة العالمية، كادر تدريبي محترف، وبيئة حماسية لتغير أسلوب حياتك.</p>
+        </div>
+
+        <div class="section-title">🕒 مواعيد العمل والصالة</div>
+        <div class="schedule-card">
+            <div class="schedule-item">
+                <span>👨 <strong>فترة الرجال:</strong></span>
+                <span>يومياً: 2:00 ظهراً - 12:00 منتصف الليل</span>
+            </div>
+            <div class="schedule-item">
+                <span>👩 <strong>فترة السيدات:</strong></span>
+                <span>يومياً: 9:00 صباحاً - 1:30 ظهراً</span>
+            </div>
+        </div>
+
+        <div class="section-title">🔥 مميزات النادي</div>
+
+        <div class="feature-card">
+            <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=400&auto=format&fit=crop" class="feature-img" alt="أجهزة">
+            <div class="feature-body">
+                <div class="feature-title">أحدث الأجهزة العالمية</div>
+                <div class="feature-desc">تجهيزات كاملة لتمارين حديد، كارديو، ولياقة بدنية.</div>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=400&auto=format&fit=crop" class="feature-img" alt="مدربين">
+            <div class="feature-body">
+                <div class="feature-title">تدريب شخصي (Personal Training)</div>
+                <div class="feature-desc">متابعة دقيقة مع أفضل الكباتن لتصميم برنامجك الخاص.</div>
+            </div>
+        </div>
+
+        <div class="section-title">💳 باقات الاشتراك العادية والخاصة</div>
+
+        <!-- باقة 1 -->
+        <div class="pricing-card">
+            <div class="plan-name">الاشتراك الشهري</div>
+            <div class="plan-price">450 <span>EGP / شهرياً</span></div>
+            <ul class="plan-features">
+                <li>✔ دخول مفتوح لجميع صالات الجيم</li>
+                <li>✔ قياس InBody مجاني عند الاشتراك</li>
+                <li>✔ جدول تمارين مبدئي</li>
+            </ul>
+            <a href="https://wa.me/201099187572?text=عايز%20أستفسر%20عن%20الاشتراك%20الشهري" class="btn-whatsapp">
+                💬 اشترك الآن عبر الواتساب
+            </a>
+        </div>
+
+        <!-- باقة 2 (الأكثر طلباً) -->
+        <div class="pricing-card featured">
+            <div class="badge">الأكثر شعبية 🔥</div>
+            <div class="plan-name">باقة الـ 3 شهور</div>
+            <div class="plan-price">1100 <span>EGP / 3 شهور</span></div>
+            <ul class="plan-features">
+                <li>✔ دخول كامل لجميع الأقسام والكلاسات</li>
+                <li>✔ 3 مرات فحص InBody مجاني</li>
+                <li>✔ نظام غذائي + جدول تمارين متقدم</li>
+            </ul>
+            <a href="https://wa.me/201099187572?text=عايز%20أشترك%20في%20عروض%20الـ3%20شهور" class="btn-whatsapp">
+                💬 اشترك الآن عبر الواتساب
+            </a>
+        </div>
+
+        <a href="https://maps.google.com" class="location-btn" target="_blank">
+            📍 موقعنا على الخريطة للوصول المباشر
+        </a>
+
+    </div>
+
+    <div class="footer">
+        <p>Power Fitness Club © 2026 - جميع الحقوق محفوظة</p>
+    </div>
+
+</body>
+</html>
